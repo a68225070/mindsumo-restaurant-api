@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "semi": ["warn", "never"],
+    "quotes": ["warn", "single", { "allowTemplateLiterals": true }],
+    "max-len": ["warn", 80],
+    "no-confusing-arrow": ["error", {"allowParens": true}],
+    "consistent-return": "off",
+    "no-param-reassign": "off",
+    "no-unused-vars": "off",
+    "no-console": "off"
+  }
+}
