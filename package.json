@@ -1,6 +1,6 @@
 {
   "name": "mindsumo-restaurant-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "main": "app.js",
@@ -15,7 +15,6 @@
     "prepush": "npm run lint"
   },
   "dependencies": {
-    "@newrelic/native-metrics": "^2.1.0",
     "body-parser": "~1.15.2",
     "compression": "^1.6.2",
     "connect-timeout": "^1.8.0",
