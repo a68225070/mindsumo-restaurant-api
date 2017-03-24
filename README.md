@@ -2,5 +2,5 @@
 Submission for [MindSumo CapitalOne Restaurant Recommender challenge](https://www.mindsumo.com/contests/restaurant-api)
 
 ## TODO:
-
- - [ ] everything
+  - [x] Search API
+  - [ ] Front-End 

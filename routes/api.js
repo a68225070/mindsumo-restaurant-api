@@ -6,8 +6,8 @@ const router = express.Router()
 
 /**
  * POST
- * /recommendations
- * API Endpoint for general recommendations
+ * /search
+ * API Endpoint for general search
  *
  * Parameters:
  *  required:
@@ -17,7 +17,7 @@ const router = express.Router()
  *    limit: How many to show
  *    offset: Offset the list of returned business results by this amount.
  */
-router.post('/recommendations', (req, res, next) => {
+router.post('/search', (req, res, next) => {
   // Validate inputs
   req.assert('term', '"term" cannot be empty.').notEmpty()
   req.assert('location', '"location" cannot be empty.').notEmpty()
