@@ -14,7 +14,7 @@ const CLIENT_SECRET = process.env.YELP_SECRET
 
 var yelpClient
 
-if(!CLIENT_ID || !CLIENT_SECRET) throw new Error('Yelp API keys not set')
+if (!CLIENT_ID || !CLIENT_SECRET) throw new Error('Yelp API keys not set')
 
 // Generate access token
 const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then((response) => {
