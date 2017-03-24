@@ -27,7 +27,7 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then((response) => {
 
 const app = express()
 
-app.use(logger(environment === 'production' ? 'common' : 'dev'))
+app.use(logger(environment === 'production' ? 'tiny' : 'dev'))
 app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
