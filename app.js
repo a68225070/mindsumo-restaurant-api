@@ -9,14 +9,12 @@ const yelp = require('yelp-fusion')
 
 const environment = process.env.NODE_ENV
 
-const CLIENT_ID =
-  process.env.YELP_ID ||
-  'LwyO2ipJjCw8Sro-cH6uAg'
-const CLIENT_SECRET =
-  process.env.YELP_SECRET ||
-  '5Z2wbtMFIBby6YuuJ1rZtQTz5Bd0qDPR67fN6f0qeZ1CDGbuSp6DRKA5AD4oS8e9'
+const CLIENT_ID = process.env.YELP_ID
+const CLIENT_SECRET = process.env.YELP_SECRET
 
 var yelpClient
+
+if(!CLIENT_ID || !CLIENT_SECRET) throw new Error('Yelp API keys not set')
 
 // Generate access token
 const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then((response) => {
