@@ -24,9 +24,11 @@
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
     "pug": "~2.0.0-beta6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "yelp-fusion": "^1.0.3"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.1",
     "eslint": "3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "2.2.0",
