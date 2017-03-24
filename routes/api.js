@@ -1,3 +1,4 @@
+const util = require('util')
 const express = require('express')
 const yelp = require('yelp-fusion')
 
@@ -17,20 +18,42 @@ const router = express.Router()
  *    offset: Offset the list of returned business results by this amount.
  */
 router.post('/recommendations', (req, res, next) => {
-  // Search
-  req.yelpClient.search({
-    term: req.body.term,
-    location: req.body.location,
-  }).then((response) => {
-    console.log(response.jsonBody.businesses)
-    res.status(200).json({
+  // Validate inputs
+  req.assert('term', '"term" cannot be empty.').notEmpty()
+  req.assert('location', '"location" cannot be empty.').notEmpty()
+  req.assert('limit', '"limit" must be a number.').optional().isInt()
+  req.assert('offset', '"offset" must be a number.').optional().isInt()
+  // Sanitize inputs
+  req.sanitize('term').trim()
+  req.sanitize('location').trim()
+  req.sanitize('limit').toInt()
+  req.sanitize('offset').toInt()
+
+  req.getValidationResult().then((result) => {
+    if (!result.isEmpty()) {
+      res.status(400).json({ status: 400, error: result.array() })
+      return
+    }
+    // Search
+    const searchObject = {
       term: req.body.term,
       location: req.body.location,
-      response: response.jsonBody.businesses,
+    }
+
+    if (req.body.limit) searchObject.limit = req.body.limit
+    if (req.body.offset) searchObject.offset = req.body.offset
+
+    req.yelpClient.search(searchObject).then((response) => {
+      console.log(response.jsonBody.businesses)
+      res.status(200).json({
+        term: req.body.term,
+        location: req.body.location,
+        response: response.jsonBody.businesses,
+      })
+    }).catch((err) => {
+      console.error(err)
+      res.status(406).json({ status: 406, error: err })
     })
-  }).catch((err) => {
-    console.error(err)
-    res.status(406).json({ error: err })
   })
 })
 
