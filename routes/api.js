@@ -44,7 +44,6 @@ router.post('/search', (req, res, next) => {
     if (req.body.offset) searchObject.offset = req.body.offset
 
     req.yelpClient.search(searchObject).then((response) => {
-      console.log(response.jsonBody.businesses)
       res.status(200).json({
         term: req.body.term,
         location: req.body.location,
