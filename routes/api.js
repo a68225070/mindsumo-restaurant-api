@@ -4,28 +4,26 @@ const yelp = require('yelp-fusion')
 
 const router = express.Router()
 
-/**
- * POST
- * /search
- * API Endpoint for general search
- *
- * Parameters:
- *  required:
- *    term: Search term
- *    location: Location
- *  optional:
- *    limit: How many to show
- *    offset: Offset the list of returned business results by this amount.
- */
 router.post('/search', (req, res, next) => {
   // Validate inputs
-  req.assert('term', '"term" cannot be empty.').notEmpty()
-  req.assert('location', '"location" cannot be empty.').notEmpty()
-  req.assert('limit', '"limit" must be a number.').optional().isInt()
-  req.assert('offset', '"offset" must be a number.').optional().isInt()
+  req.assert('location', 'Invalid param: location')
+    .isAlphanumeric()
+    .notEmpty()
+  req.assert('term', 'Invalid param: term')
+    .optional()
+    .isAlphanumeric()
+    .notEmpty()
+  req.assert('limit', 'Invalid param: limit')
+    .optional()
+    .isInt()
+    .lesserOrEqual(50)
+  req.assert('offset', 'Invalid param: offset')
+    .optional()
+    .isInt()
+
   // Sanitize inputs
-  req.sanitize('term').trim()
   req.sanitize('location').trim()
+  req.sanitize('term').trim()
   req.sanitize('limit').toInt()
   req.sanitize('offset').toInt()
 
@@ -36,17 +34,16 @@ router.post('/search', (req, res, next) => {
     }
     // Search
     const searchObject = {
-      term: req.body.term,
       location: req.body.location,
     }
 
+    if (req.body.term) searchObject.term = req.body.term
     if (req.body.limit) searchObject.limit = req.body.limit
     if (req.body.offset) searchObject.offset = req.body.offset
 
     req.yelpClient.search(searchObject).then((response) => {
       res.status(200).json({
-        term: req.body.term,
-        location: req.body.location,
+        search: searchObject,
         response: response.jsonBody.businesses,
       })
     }).catch((err) => {
