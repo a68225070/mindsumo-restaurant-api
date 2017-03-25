@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const timeout = require('connect-timeout')
 const expressValidator = require('express-validator')
 const compression = require('compression')
+const cors = require('cors')
 const yelp = require('yelp-fusion')
 
 const environment = process.env.NODE_ENV
@@ -43,7 +44,7 @@ app.use(expressValidator({
 }))
 // Cookies
 app.use(cookieParser())
-
+app.use(cors())
 app.use((req, res, next) => {
   console.log('Attaching yelp client')
   req.yelpClient = yelpClient

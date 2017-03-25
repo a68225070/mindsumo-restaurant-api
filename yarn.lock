@@ -2,12 +2,6 @@
 # yarn lockfile v1
 
 
-"@newrelic/native-metrics@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@newrelic/native-metrics/-/native-metrics-2.1.0.tgz#81eb234e6801c752266de9d61aec34f237e89b12"
-  dependencies:
-    nan "^2.4.0"
-
 "@tonybadguy/call-me-maybe@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@tonybadguy/call-me-maybe/-/call-me-maybe-2.0.1.tgz#233267eb0a1625c2f5954f27af364b4a29c6e344"
@@ -503,6 +497,12 @@ core-js@^2.4.0:
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+cors@^2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.1.tgz#6181aa56abb45a2825be3304703747ae4e9d2383"
+  dependencies:
+    vary "^1"
 
 cryptiles@2.x.x:
   version "2.0.5"
@@ -1705,7 +1705,7 @@ mute-stream@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
-nan@^2.3.0, nan@^2.4.0:
+nan@^2.3.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.5.1.tgz#d5b01691253326a97a2bbee9e61c55d8d60351e2"
 
@@ -2501,7 +2501,7 @@ validator@~6.2.0:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/validator/-/validator-6.2.1.tgz#bc575b78d15beb2e338a665ba9530c7f409ef667"
 
-vary@~1.1.0:
+vary@^1, vary@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.1.tgz#67535ebb694c1d52257457984665323f587e8d37"
 
