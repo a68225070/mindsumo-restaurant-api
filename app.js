@@ -32,16 +32,7 @@ app.use(logger(environment === 'production' ? 'tiny' : 'dev'))
 app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(expressValidator({
-  customValidators: {
-    greaterOrEqual(param, num) {
-      return param >= num
-    },
-    lesserOrEqual(param, num) {
-      return param <= num
-    },
-  },
-}))
+app.use(expressValidator())
 // Cookies
 app.use(cookieParser())
 app.use(cors())
